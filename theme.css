@@ -1,0 +1,222 @@
+/* ============================================================
+   MOONFALL — theme.css
+   ⚠️ THIS IS ANTIGRAVITY'S LANE. Claude wrote a minimal baseline
+   only so the prototype is usable. Antigravity: replace/expand
+   freely for the Don't Starve art direction. Do NOT touch .js.
+   Keep the element IDs/classes the JS relies on (see TEAM_CHAT).
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&display=swap');
+
+:root{
+  --ink: #d4c8b2;
+  --paper: #12100e;
+  --paper2: #1a1714;
+  --accent: #a37b38;
+  --wolf: #7a1c1c;
+  --seer: #3b4e8a;
+  --guard: #3a7a63;
+  --fool: #8a4b7b;
+  --line: rgba(160, 140, 110, 0.4);
+}
+*{ box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+/* INVARIANT (do not remove): [hidden] must win over display rules below.
+   The JS toggles .hidden on #title/#gameover/#overlay/#prompt/action buttons. */
+[hidden]{ display:none !important; }
+html,body{ height:100%; overflow:hidden; background:#070605; color:var(--ink);
+  font-family:'Special Elite', "Courier New", monospace; user-select:none; }
+#game{ position:fixed; inset:0; }
+#cv{ position:absolute; inset:0; display:block; }
+
+/* Hand-drawn crooked borders mixin for boxes */
+.mgBox, .meetBox, .voteCard, #prompt, #phaseTag, #roleTag, #questTag, .actBtn, .seqBtn, .valveBtns button, #startBtn, #goRestart, #toast {
+  border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px !important;
+}
+
+/* ---------- HUD ---------- */
+#hud{ position:absolute; top:0; left:0; right:0; padding:10px 12px;
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+  pointer-events:none; z-index:5;
+  background:linear-gradient(to bottom, rgba(7,6,5,.9), rgba(7,6,5,0)); }
+#phaseTag{ font-weight:bold; letter-spacing:1px; font-size:15px;
+  background:rgba(18,16,14,.8); border:2px solid var(--line); padding:6px 12px; text-transform:uppercase; }
+#dayNum{ opacity:.7; font-size:13px; margin-left:4px; }
+#phaseTimer{ position:relative; width:120px; height:16px; border:2px solid var(--line);
+  border-radius:2px 255px 3px 25px / 255px 5px 225px 3px; overflow:hidden; background:rgba(0,0,0,.6); }
+#phaseTimerBar{ position:absolute; inset:0; width:100%; background:linear-gradient(90deg,var(--accent),#735422); transition:width .2s linear; }
+#phaseTimerLabel{ position:absolute; inset:0; display:grid; place-items:center; font-size:11px; font-weight:bold; color:#000; }
+#roleTag,#questTag{ font-size:14px; background:rgba(18,16,14,.8); border:2px solid var(--line);
+  padding:6px 12px; }
+#roleTag b{ font-weight:bold; color:var(--accent); }
+
+/* ---------- interaction prompt ---------- */
+#prompt{ position:absolute; left:50%; bottom:120px; transform:translateX(-50%);
+  background:rgba(18,16,14,.9); border:2px solid var(--accent);
+  padding:10px 16px; font-size:16px; z-index:6; font-weight:bold; }
+#prompt #promptKey{ display:inline-grid; place-items:center; width:26px; height:26px;
+  background:var(--accent); color:#12100e; border-radius:4px; font-weight:bold; margin-right:8px; 
+  border:2px solid #5a421b; }
+
+/* ---------- action buttons ---------- */
+#actions{ position:absolute; right:16px; bottom:120px; display:flex; flex-direction:column; gap:12px; z-index:6; }
+.actBtn{ min-width:100px; padding:16px 18px; font-size:18px; font-weight:bold; font-family:'Special Elite', monospace;
+  color:var(--ink); border:2px solid var(--line); background:#221d18; cursor:pointer; 
+  box-shadow: 2px 2px 0px rgba(0,0,0,.5); transition:transform 0.1s; }
+.actBtn.wolf{ background:var(--wolf); color:#ffd6d6; border-color:#3a0c0c; }
+.actBtn.seer{ background:var(--seer); color:#d6dfff; border-color:#1c264a; }
+.actBtn.guard{ background:var(--guard); color:#d6fff0; border-color:#1a3a2d; }
+.actBtn:active{ transform:scale(.92) rotate(-2deg); }
+
+/* ---------- dpad ---------- */
+#dpad{ position:absolute; left:14px; bottom:24px; display:flex; flex-direction:column; align-items:center; gap:6px; z-index:6; }
+#dpad .dpadmid{ display:flex; gap:44px; }
+#dpad button{ width:56px; height:56px; border-radius:2px 255px 3px 25px / 255px 5px 225px 3px; font-size:24px;
+  background:rgba(26,23,20,.8); color:var(--ink); border:2px solid var(--line); cursor:pointer; }
+#dpad button:active{ background:var(--accent); color:#000; transform:scale(0.95); }
+@media(hover:hover) and (pointer:fine){ #dpad{ opacity:.35; transition:opacity .2s; } #dpad:hover{ opacity:1; } }
+
+/* ---------- overlay (minigame / meeting) ---------- */
+#overlay{ position:absolute; inset:0; z-index:20; display:grid; place-items:center;
+  background:radial-gradient(ellipse at center, rgba(12,10,8,.8) 0%, rgba(2,1,1,.95) 100%); backdrop-filter:blur(2px); padding:20px; }
+.mgBox,.meetBox{ background:url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.05"/></svg>'), var(--paper2); 
+  border:3px solid var(--line);
+  padding:26px; max-width:440px; width:100%; text-align:center; box-shadow:0 25px 70px rgba(0,0,0,.9), inset 0 0 30px rgba(0,0,0,0.5); }
+.mgBox h3,.meetBox h2{ margin-bottom:16px; color:var(--accent); font-family:'Creepster', cursive; font-size:32px; letter-spacing:2px; font-weight:normal; text-shadow:2px 2px 0 #000; }
+.meetSub{ opacity:.8; font-size:15px; margin-bottom:18px; border-bottom:1px dashed var(--line); padding-bottom:10px; }
+.mgCancel,.voteSkip{ margin-top:20px; padding:10px 22px; border:2px solid var(--line); font-family:'Special Elite', monospace;
+  background:transparent; color:var(--ink); cursor:pointer; font-size:16px; 
+  border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px; }
+.mgCancel:hover,.voteSkip:hover{ background:rgba(255,255,255,.05); }
+
+/* wire minigame */
+.mgWire{ position:relative; display:flex; justify-content:space-between; align-items:center; gap:30px; min-height:180px; }
+.wcol{ display:flex; flex-direction:column; gap:20px; }
+.wdot{ width:36px; height:36px; border-radius:50%; cursor:pointer; border:3px solid #000; box-shadow:0 0 0 2px var(--line); }
+.wdot.sel{ border-color:#fff; box-shadow:0 0 8px #fff; }
+.wdot.ok{ opacity:.3; cursor:default; border-color:#000; }
+
+/* sequence */
+.mgSeq{ display:grid; grid-template-columns:1fr 1fr; gap:16px; padding:10px; }
+.seqBtn{ height:76px; font-size:28px; font-family:'Special Elite', monospace; border:2px solid var(--line);
+  background:#241d15; color:var(--ink); cursor:pointer; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
+.seqBtn.lit{ background:var(--accent); color:#12100e; box-shadow:0 0 15px var(--accent); }
+.seqBtn.good{ background:var(--guard); color:#12100e; box-shadow:0 0 15px var(--guard); }
+
+/* valve */
+.mgValve{ display:grid; place-items:center; height:160px; }
+.valve{ font-size:72px; color:var(--accent); transition:transform .2s; filter:drop-shadow(2px 2px 0px #000); }
+.valveBtns{ display:flex; gap:24px; justify-content:center; margin-top:14px; }
+.valveBtns button{ width:64px; height:64px; font-size:28px; border:2px solid var(--line); background:#241d15; color:var(--ink); cursor:pointer; }
+.valveBtns button:active{ transform:scale(0.9); }
+
+/* rhythm */
+.mgRhythm{ height:70px; display:grid; place-items:center; }
+.rbar{ position:relative; width:100%; height:30px; background:#12100e; overflow:hidden; border:2px solid var(--line); 
+  border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px; }
+.rzone{ position:absolute; left:38%; width:24%; top:0; bottom:0; background:rgba(58,122,99,.5); border-left:1px dashed var(--guard); border-right:1px dashed var(--guard); }
+.rmark{ position:absolute; top:0; bottom:0; width:6px; background:var(--accent); left:0; box-shadow:0 0 8px var(--accent); }
+.rhit{ margin-top:18px; padding:14px 34px; font-size:20px; font-family:'Special Elite', monospace; border:2px solid #000; background:var(--accent); color:#12100e; font-weight:bold; cursor:pointer; 
+  border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px; }
+.rhit:active{ transform:scale(0.95); }
+
+/* meeting vote */
+.voteGrid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:10px 0; }
+.voteCard{ padding:16px; border:2px solid var(--line); background:rgba(30,25,20,.9); color:var(--ink); cursor:pointer; font-size:16px; font-family:'Special Elite', monospace;
+  box-shadow:2px 2px 0 rgba(0,0,0,.4); text-align:left; }
+.voteCard.me{ border-color:var(--accent); box-shadow:0 0 10px rgba(163,123,56,.3); }
+.voteCard:hover{ background:rgba(40,35,30,.9); }
+.voteCard:active{ transform:scale(.96) rotate(1deg); }
+
+/* ---------- title / gameover ---------- */
+#title,#gameover{ position:absolute; inset:0; z-index:30; display:grid; place-items:center;
+  background:radial-gradient(ellipse at center, #181512 0%, #050403 100%); }
+.titleInner,.goInner{ text-align:center; padding:40px; background:url('data:image/svg+xml;utf8,<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="200" height="200" filter="url(%23noise)" opacity="0.04"/></svg>');
+  border: 1px solid rgba(160,140,110,0.1); border-radius:50%; box-shadow:0 0 100px 50px rgba(0,0,0,0.8); }
+#title h1{ font-family:'Creepster', cursive; font-weight:normal; font-size:clamp(60px,15vw,110px); letter-spacing:8px; color:var(--ink);
+  text-shadow:3px 3px 0px #000, 6px 6px 0px #24170d, 0 0 60px rgba(163,123,56,.3); margin-bottom:10px; }
+.sub{ opacity:.8; margin:10px 0 32px; font-size:18px; letter-spacing:1px; color:var(--accent); }
+#startBtn,#goRestart{ padding:16px 48px; font-size:24px; font-weight:bold; font-family:'Special Elite', monospace;
+  border:3px solid #000; background:var(--accent); color:#12100e; cursor:pointer;
+  box-shadow:4px 4px 0 rgba(0,0,0,0.8), 0 0 20px rgba(163,123,56,.2); transition:all 0.1s; }
+#startBtn:active,#goRestart:active{ transform:translate(2px, 2px); box-shadow:2px 2px 0 rgba(0,0,0,0.8); }
+.hint{ margin-top:30px; opacity:.4; font-size:14px; }
+#gameover .goInner h2{ font-family:'Creepster', cursive; font-weight:normal; font-size:60px; margin-bottom:16px; color:var(--wolf); text-shadow:2px 2px 0 #000; }
+#gameover .goInner p{ opacity:.9; margin-bottom:30px; max-width:400px; font-size:18px; line-height:1.5; }
+
+/* ---------- toast ---------- */
+#toast{ position:absolute; left:50%; bottom:200px; transform:translateX(-50%) translateY(15px);
+  background:rgba(18,16,14,.95); border:2px solid var(--accent); color:var(--ink);
+  padding:12px 24px; font-size:16px; opacity:0; transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index:8; pointer-events:none; max-width:80vw; text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.8); }
+#toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* phase body tints (night handled on canvas; this is for chrome) */
+.phase-night #hud{ filter:brightness(.85) sepia(0.3); }
+
+/* ---------- New Elements from v0.5+ ---------- */
+#actUse { background: #b5772f; color: #12100e; border-color: #5a421b; }
+#actUse:hover { background: #d3a24c; }
+
+.voteResult {
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  border-top: 1px dashed var(--line);
+  border-bottom: 1px dashed var(--line);
+  padding: 12px 0;
+}
+.vrow {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(30,25,20,0.6);
+  border: 1px solid var(--line);
+  border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px !important;
+  font-family: 'Special Elite', monospace;
+  font-size: 16px;
+  color: var(--ink);
+}
+.vrow.skip {
+  background: rgba(40,30,30,0.4);
+  color: #a6948a;
+  border-style: dashed;
+}
+.vrow b {
+  color: var(--accent);
+  font-size: 18px;
+}
+.vrow.skip b {
+  color: #a6948a;
+}
+.voteOutcome {
+  margin-top: 16px;
+  font-size: 18px;
+  font-family: 'Special Elite', monospace;
+  color: var(--wolf);
+  text-shadow: 1px 1px 0 #000;
+  font-weight: bold;
+}
+
+/* ---------- Stamina & Run ---------- */
+#staminaWrap {
+  position: absolute;
+  left: 14px;
+  bottom: 90px;
+  width: 56px;
+  height: 8px;
+  background: rgba(18,16,14,0.8);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+#staminaBar {
+  height: 100%;
+  background: var(--seer) !important;
+  transition: width 0.1s linear;
+}
+.actBtn.run {
+  background: var(--seer);
+  color: #d6dfff;
+  border-color: #1c264a;
+}

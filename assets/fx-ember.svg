@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <g fill="none">
+    <!-- Glowing outer aura -->
+    <circle cx="8" cy="8" r="6" fill="#a37b38" opacity="0.3" />
+    <!-- Hot core -->
+    <path d="M8 4 L 10 7 L 13 8 L 10 9 L 8 12 L 6 9 L 3 8 L 6 7 Z" fill="#d3a24c" />
+    <circle cx="8" cy="8" r="2" fill="#fff" />
+  </g>
+</svg>

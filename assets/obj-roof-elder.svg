@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Crooked sagging roof -->
+  <path d="M0,60 Q30,20 60,10 Q90,30 120,60 L105,60 L105,50 L15,50 L15,60 Z" fill="#26231d" stroke="#100f0c" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M15,50 Q60,35 105,50" fill="#38332a" stroke="#100f0c" stroke-width="2"/>
+</svg>

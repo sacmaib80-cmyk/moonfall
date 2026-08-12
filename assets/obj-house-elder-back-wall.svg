@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" preserveAspectRatio="none">
+<rect x="14" y="108" width="172" height="88" fill="#5e4e3e" stroke="#20160e" stroke-width="3"/>
+<rect x="14" y="108" width="10" height="88" fill="#443628"/>
+<rect x="176" y="108" width="10" height="88" fill="#443628"/>
+<rect x="14" y="108" width="172" height="8" fill="#302418"/>
+<rect x="14" y="188" width="172" height="8" fill="#443628"/>
+<path d="M30 116 L30 188" stroke="#443628" stroke-width="1.4" opacity="0.7"/>
+<path d="M33 130 q3 10 0 22 M33 156 q3 8 0 18" stroke="#443628" stroke-width="0.8" opacity="0.4"/>
+<path d="M46 116 L46 188" stroke="#443628" stroke-width="1.4" opacity="0.7"/>
+<path d="M49 130 q3 10 0 22 M49 156 q3 8 0 18" stroke="#443628" stroke-width="0.8" opacity="0.4"/>
+<path d="M62 116 L62 188" stroke="#443628" stroke-width="1.4" opacity="0.7"/>
+<path d="M65 130 q3 10 0 22 M65 156 q3 8 0 18" stroke="#443628" stroke-width="0.8" opacity="0.4"/>
+<path d="M78 116 L78 188" stroke="#443628" stroke-width="1.4" opacity="0.7"/>
+<path d="M81 130 q3 10 0 22 M81 156 q3 8 0 18" stroke="#443628" stroke-width="0.8" opacity="0.4"/>
+<path d="M94 116 L94 188" stroke="#443628" stroke-width="1.4" opacity="0.7"/>
+<path d="M97 130 q3 10 0 22 M97 156 q3 8 0 18" stroke="#443628" stroke-width="0.8" opacity="0.4"/>
+<path d="M110 116 L110 188" stroke="#443628" stroke-width="1.4" opacity="0.7"/>
+<path d="M113 130 q3 10 0 22 M113 156 q3 8 0 18" stroke="#443628" stroke-width="0.8" opacity="0.4"/>
+<path d="M126 116 L126 188" stroke="#443628" stroke-width="1.4" opacity="0.7"/>
+<path d="M129 130 q3 10 0 22 M129 156 q3 8 0 18" stroke="#443628" stroke-width="0.8" opacity="0.4"/>
+<path d="M142 116 L142 188" stroke="#443628" stroke-width="1.4" opacity="0.7"/>
+<path d="M145 130 q3 10 0 22 M145 156 q3 8 0 18" stroke="#443628" stroke-width="0.8" opacity="0.4"/>
+<path d="M158 116 L158 188" stroke="#443628" stroke-width="1.4" opacity="0.7"/>
+<path d="M161 130 q3 10 0 22 M161 156 q3 8 0 18" stroke="#443628" stroke-width="0.8" opacity="0.4"/>
+<path d="M174 116 L174 188" stroke="#443628" stroke-width="1.4" opacity="0.7"/>
+<path d="M177 130 q3 10 0 22 M177 156 q3 8 0 18" stroke="#443628" stroke-width="0.8" opacity="0.4"/>
+<rect x="84" y="128" width="32" height="30" rx="2" fill="#1c2018" stroke="#20160e" stroke-width="2.5"/>
+    <path d="M100 128 v30 M84 143 h32" stroke="#93815f" stroke-width="1.4" opacity="0.55"/>
+    <rect x="80" y="126" width="4" height="34" fill="#302418"/>
+    <rect x="116" y="126" width="4" height="34" fill="#302418"/>
+    <path d="M81 128 l3 3 M119 128 l-3 3" stroke="#20160e" stroke-width="1"/>
+<rect x="30" y="134" width="24" height="22" rx="2" fill="#1c2018" stroke="#20160e" stroke-width="2.5"/>
+    <path d="M42 134 v22 M30 145 h24" stroke="#93815f" stroke-width="1.4" opacity="0.55"/>
+    <rect x="26" y="132" width="4" height="26" fill="#302418"/>
+    <rect x="54" y="132" width="4" height="26" fill="#302418"/>
+    <path d="M27 134 l3 3 M57 134 l-3 3" stroke="#20160e" stroke-width="1"/>
+<rect x="146" y="134" width="24" height="22" rx="2" fill="#1c2018" stroke="#20160e" stroke-width="2.5"/>
+    <path d="M158 134 v22 M146 145 h24" stroke="#93815f" stroke-width="1.4" opacity="0.55"/>
+    <rect x="142" y="132" width="4" height="26" fill="#302418"/>
+    <rect x="170" y="132" width="4" height="26" fill="#302418"/>
+    <path d="M143 134 l3 3 M173 134 l-3 3" stroke="#20160e" stroke-width="1"/>
+<g opacity="0.95">
+<ellipse cx="40" cy="184" rx="3.4" ry="6" fill="#443628" stroke="#20160e" stroke-width="0.8"/>
+<ellipse cx="47" cy="184" rx="3.4" ry="6" fill="#443628" stroke="#20160e" stroke-width="0.8"/>
+<ellipse cx="54" cy="184" rx="3.4" ry="6" fill="#443628" stroke="#20160e" stroke-width="0.8"/>
+<ellipse cx="61" cy="184" rx="3.4" ry="6" fill="#443628" stroke="#20160e" stroke-width="0.8"/>
+</g>
+<ellipse cx="160" cy="182" rx="8" ry="10" fill="#443628" stroke="#20160e" stroke-width="1.5"/>
+<ellipse cx="160" cy="176" rx="8" ry="3" fill="#302418"/>
+<path d="M16 195 L184 195" stroke="rgba(0,0,0,0.4)" stroke-width="3"/>
+</svg>

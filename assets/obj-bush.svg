@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 60">
+  <g stroke="#1a2118" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#2d3829">
+    <path d="M10 50 C 0 40, 10 25, 20 20 C 25 10, 40 5, 50 15 C 60 10, 75 20, 70 35 C 80 45, 70 55, 60 55 C 55 60, 25 60, 10 50 Z" />
+    <!-- Thorny branches inside -->
+    <path d="M20 50 L 30 30 M 30 30 L 25 25 M 30 30 L 40 20 M 60 45 L 50 25 M 50 25 L 55 15" stroke="#131711" stroke-width="2" fill="none" />
+    <!-- Thorns -->
+    <path d="M25 40 L 22 40 M 28 35 L 30 32 M 35 25 L 34 22 M 55 35 L 58 36 M 52 20 L 50 18" stroke="#131711" stroke-width="1.5" />
+  </g>
+</svg>

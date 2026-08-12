@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 80">
+  <g stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round" fill="none">
+    <rect x="14" y="6" width="36" height="68" fill="#38281a" stroke-width="3" />
+    <!-- Doors -->
+    <path d="M32 6 L 32 74" stroke-width="3" />
+    <!-- Panels -->
+    <rect x="18" y="12" width="10" height="24" fill="#4a3625" />
+    <rect x="36" y="12" width="10" height="24" fill="#4a3625" />
+    <rect x="18" y="42" width="10" height="24" fill="#4a3625" />
+    <rect x="36" y="42" width="10" height="24" fill="#4a3625" />
+    <!-- Handles -->
+    <circle cx="28" cy="40" r="2" fill="#1a1a1a" />
+    <circle cx="36" cy="40" r="2" fill="#1a1a1a" />
+    <!-- Crookedness -->
+    <path d="M14 6 C 24 2, 40 10, 50 6" stroke-width="3" />
+  </g>
+</svg>

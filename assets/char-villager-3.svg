@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 64">
+  <circle cx="24" cy="18" r="10" fill="#a08c6e" stroke="#12100e" stroke-width="2"/>
+  <path d="M18,28 Q24,42 30,28 Z" fill="#695c47" stroke="#12100e" stroke-width="2"/>
+  <path d="M14,64 L24,46 L34,64" stroke="#12100e" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Left arm swing forward -->
+  <path d="M16,30 L10,40" stroke="#12100e" stroke-width="3" stroke-linecap="round"/>
+  <path d="M32,30 L38,40" stroke="#12100e" stroke-width="3" stroke-linecap="round"/>
+</svg>

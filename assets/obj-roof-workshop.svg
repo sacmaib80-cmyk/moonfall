@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Asymmetric flatish roof with metal texture -->
+  <path d="M0,60 L20,20 L100,25 L120,60 L110,60 L110,50 L10,50 L10,60 Z" fill="#353b40" stroke="#101114" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M10,50 L25,35 L95,40 L110,50" fill="#474e54" stroke="#101114" stroke-width="2"/>
+  <!-- Corrugated lines -->
+  <line x1="30" y1="35" x2="20" y2="55" stroke="#101114" stroke-width="2" opacity="0.5"/>
+  <line x1="50" y1="37" x2="40" y2="55" stroke="#101114" stroke-width="2" opacity="0.5"/>
+  <line x1="70" y1="38" x2="60" y2="55" stroke="#101114" stroke-width="2" opacity="0.5"/>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#3a3026"/>
+  <!-- Planks -->
+  <line x1="0" y1="16" x2="64" y2="16" stroke="#1c1610" stroke-width="2"/>
+  <line x1="0" y1="32" x2="64" y2="32" stroke="#1c1610" stroke-width="2"/>
+  <line x1="0" y1="48" x2="64" y2="48" stroke="#1c1610" stroke-width="2"/>
+  <!-- Nails and staggered joints -->
+  <line x1="20" y1="0" x2="20" y2="16" stroke="#1c1610" stroke-width="2"/>
+  <circle cx="16" cy="4" r="1" fill="#1c1610"/> <circle cx="24" cy="4" r="1" fill="#1c1610"/>
+  <line x1="50" y1="16" x2="50" y2="32" stroke="#1c1610" stroke-width="2"/>
+  <circle cx="46" cy="20" r="1" fill="#1c1610"/> <circle cx="54" cy="20" r="1" fill="#1c1610"/>
+  <line x1="10" y1="32" x2="10" y2="48" stroke="#1c1610" stroke-width="2"/>
+  <line x1="40" y1="48" x2="40" y2="64" stroke="#1c1610" stroke-width="2"/>
+  <!-- Wood grain -->
+  <path d="M5,8 Q15,10 25,8" stroke="#261e16" stroke-width="1" fill="none"/>
+  <path d="M15,40 Q30,42 45,40" stroke="#261e16" stroke-width="1" fill="none"/>
+</svg>

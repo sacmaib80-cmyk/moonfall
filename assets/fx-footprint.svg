@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <g fill="#935b9c" opacity="0.4">
+    <path d="M16 14 C 10 14, 8 22, 12 28 C 16 32, 24 30, 22 24 C 20 18, 22 14, 16 14 Z" /> <!-- Pad -->
+    <ellipse cx="10" cy="12" rx="3" ry="4.5" transform="rotate(-20 10 12)" />
+    <ellipse cx="16" cy="8" rx="3.5" ry="5" />
+    <ellipse cx="22" cy="10" rx="3" ry="4.5" transform="rotate(20 22 10)" />
+    <!-- Claws (sharp) -->
+    <path d="M9 7 L 8 4 L 11 6" fill="#7a3f85" />
+    <path d="M16 3 L 15 0 L 17 3" fill="#7a3f85" />
+    <path d="M23 5 L 24 2 L 21 4" fill="#7a3f85" />
+  </g>
+</svg>

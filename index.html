@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Moonfall — เกมแววูฟ</title>
+<link rel="stylesheet" href="theme.css">
+</head>
+<body>
+  <div id="game">
+    <canvas id="cv"></canvas>
+
+    <!-- HUD -->
+    <div id="hud">
+      <div id="phaseTag"><span id="phaseIcon">☀️</span> <span id="phaseText">กลางวัน</span> <span id="dayNum">วันที่ 1</span></div>
+      <div id="phaseTimer"><div id="phaseTimerBar"></div><span id="phaseTimerLabel">60</span></div>
+      <div id="roleTag">บทบาท: <b id="roleName">—</b></div>
+      <div id="questTag">เควส <b><span id="questDone">0</span>/<span id="questTotal">0</span></b></div>
+    </div>
+
+    <!-- interaction prompt -->
+    <div id="prompt" hidden><span id="promptKey">E</span> <span id="promptText"></span></div>
+
+    <!-- stamina bar (baseline inline; theme.css may restyle #staminaWrap/#staminaBar/.actBtn.run) -->
+    <div id="staminaWrap" style="position:absolute;left:14px;bottom:196px;width:150px;height:12px;border:1px solid rgba(160,140,110,.5);border-radius:6px;overflow:hidden;background:rgba(10,8,5,.6);z-index:6">
+      <div id="staminaBar" style="height:100%;width:100%;background:#4fa38a;transition:width .1s linear"></div>
+    </div>
+
+    <!-- action buttons (mobile + hint) -->
+    <div id="actions">
+      <button id="actKill" class="actBtn wolf" hidden>ฆ่า</button>
+      <button id="actSeer" class="actBtn seer" hidden>ร่ายพยากรณ์</button>
+      <button id="actGuard" class="actBtn guard" hidden>กางบาเรีย</button>
+      <button id="actUse" class="actBtn" hidden>ใช้งาน</button>
+      <button id="actRun" class="actBtn run" style="background:#3a5a7a">วิ่ง</button>
+    </div>
+
+    <!-- minigame / meeting overlay host -->
+    <div id="overlay" hidden></div>
+
+    <!-- touch dpad -->
+    <div id="dpad">
+      <button data-dir="up">▲</button>
+      <div class="dpadmid">
+        <button data-dir="left">◀</button>
+        <button data-dir="right">▶</button>
+      </div>
+      <button data-dir="down">▼</button>
+    </div>
+
+    <!-- title / start -->
+    <div id="title">
+      <div class="titleInner">
+        <h1>MOONFALL</h1>
+        <p class="sub">หมู่บ้านใต้แสงจันทร์ — ใครคือหมาป่า?</p>
+        <button id="startBtn">เริ่มเกม</button>
+        <div class="hint">เดิน: WASD / ลูกศร &nbsp;·&nbsp; วิ่ง: Shift &nbsp;·&nbsp; ใช้งาน: E &nbsp;·&nbsp; แอ็คชั่น: Space</div>
+      </div>
+    </div>
+
+    <!-- game over -->
+    <div id="gameover" hidden>
+      <div class="goInner">
+        <h2 id="goTitle">จบเกม</h2>
+        <p id="goDesc"></p>
+        <button id="goRestart">เล่นใหม่</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
