@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 64">
-  <path d="M12,64 L24,10 L36,64 Z" fill="#3b4e8a" stroke="#1c264a" stroke-width="2" stroke-linejoin="round"/>
-  <circle cx="24" cy="22" r="8" fill="#12100e"/>
-  <circle cx="24" cy="22" r="2" fill="#d6dfff"/>
-  <!-- Leg peeking out -->
-  <path d="M18,64 L24,55 L30,64" stroke="#12100e" stroke-width="4" fill="none" stroke-linecap="round"/>
-</svg>

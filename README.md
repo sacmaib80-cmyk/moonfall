@@ -1,31 +1,24 @@
 # Moonfall
 
-**A social-deduction game where the bots lie, hunt, and vote against you.**
+### [▶ เล่นเลย / Play in your browser](https://sacmaib80-cmyk.github.io/moonfall/)
 
-A top-down village where some players are wolves. You do tasks in daylight, wolves kill at night,
-and everyone argues and votes. Played against AI opponents rather than a lobby of humans.
+เกมหมาป่าในหมู่บ้านโรงสี กลางวันเดินช่วยงานและจับผิดกัน กลางคืนหมาป่าแปลงร่างออกล่า แล้วทุกคนโหวตว่าใครต้องขึ้นกิโยติน
 
-![Village](screens/moonfall-loop.gif)
+![หมู่บ้านตอนกลางวัน](screens/village.png)
 
-## What's interesting in here
+![แววูฟตอนกลางคืน](screens/wolf.png)
 
-- **Bots that play the social game, not just the movement game.** Each bot keeps a suspicion score
-  per villager and updates it from things it actually observed: who it saw completing a task, who
-  was standing next to a fresh body, who it has line of sight on. Wolves avoid witnesses, leave the
-  area after a kill, and coordinate their votes.
-- **A\* pathfinding**, so bots route around buildings instead of walking into walls.
-- **A 3.5x frame-rate fix found by measuring, not guessing.** The game ran at 17fps; profiling showed
-  the cost wasn't game logic but re-rasterizing vector art every single frame. Converting the art to
-  bitmaps once at load time took it to a stable 60fps.
-- **Houses generated as vector art from code**, with roofs that fade out when a character walks
-  inside so you can see the room.
-- Balance tuned against a headless simulation of complete matches, not by feel.
+หน้านี้เล่นคนเดียวกับบอท เลือกบทได้ก่อนเริ่ม เกมยังเป็นต้นแบบ และยังไม่ได้ลองบนมือถือจริง
 
-## Stack
+| ปุ่ม | การกระทำ |
+|---|---|
+| WASD | เดิน |
+| เมาส์ | เล็งพุ่งล่า |
+| Shift | ฮึดหลบ |
+| Q | หมาป่าแปลงร่าง |
+| Space | ใช้สกิล |
+| E | เปิดปิดประตูและหน้าต่าง / กดค้างช่วยงาน |
 
-Vanilla JavaScript · Canvas 2D · code-generated SVG · no dependencies
+A werewolf game in Thai. The link above runs entirely in the browser, against bots.
 
-## Honest notes
-
-Single-player against bots. The multiplayer version is a separate project (Pixel Clash) — the
-networking here is not built yet.
+ฉากและตัวละครทั้งหมดสร้างด้วยโค้ดของโปรเจกต์นี้ ไลบรารีกับฟอนต์ที่ใช้อยู่ใน [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)

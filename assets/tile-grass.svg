@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#333b2a"/>
-  <!-- Dirt patches -->
-  <path d="M10,10 Q20,0 30,10 Q20,20 10,10 Z" fill="#2d251d" opacity="0.6"/>
-  <path d="M40,50 Q50,40 60,50 Q50,60 40,50 Z" fill="#2d251d" opacity="0.6"/>
-  <!-- Grass tufts -->
-  <path d="M15,40 Q13,35 10,32 M15,40 Q17,33 20,32 M15,40 L15,30" stroke="#1d2417" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <path d="M45,20 Q43,15 40,12 M45,20 Q47,13 50,12 M45,20 L45,10" stroke="#1d2417" stroke-width="2" fill="none" stroke-linecap="round"/>
-</svg>

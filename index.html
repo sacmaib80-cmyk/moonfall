@@ -1,73 +1,104 @@
 <!doctype html>
 <html lang="th">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>Moonfall — เกมแววูฟ</title>
-<link rel="stylesheet" href="theme.css">
+  <meta charset="utf-8"><link rel="icon" href="data:,"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
+  <meta name="theme-color" content="#101a22"><title>MOONFALL — คืนล่า ณ หมู่บ้านโรงสี</title>
+  <link rel="preload" href="assets/fonts/Trirong-500-thai.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
-  <div id="game">
-    <canvas id="cv"></canvas>
+  <canvas id="world" aria-label="หมู่บ้าน Moonfall"></canvas>
 
-    <!-- HUD -->
-    <div id="hud">
-      <div id="phaseTag"><span id="phaseIcon">☀️</span> <span id="phaseText">กลางวัน</span> <span id="dayNum">วันที่ 1</span></div>
-      <div id="phaseTimer"><div id="phaseTimerBar"></div><span id="phaseTimerLabel">60</span></div>
-      <div id="roleTag">บทบาท: <b id="roleName">—</b></div>
-      <div id="questTag">เควส <b><span id="questDone">0</span>/<span id="questTotal">0</span></b></div>
+  
+  <svg width="0" height="0" class="defs" aria-hidden="true"><defs>
+    <path id="wax" d="M50 2c8 0 11 6 18 7s13-2 18 3 3 12 7 18 9 11 9 19-6 12-6 19 4 13-1 19-12 3-18 7-12 10-20 9-12-6-18-7-13 2-18-3-3-12-7-18-9-11-9-19 6-12 6-19-4-13 1-19 12-3 18-7S42 2 50 2z"/>
+    <symbol id="i-claw" viewBox="0 0 64 64"><path d="M15 54C20 38 22 24 31 9M29 56c4-15 7-29 15-44M43 55c3-11 6-22 12-33" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 64 64"><path d="M43 7a26 26 0 1 0 14 40A23 23 0 0 1 43 7z" fill="currentColor"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 64 64"><path d="M4 33c8-14 18-21 28-21s20 7 28 21c-8 13-18 19-28 19S12 46 4 33z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><circle cx="32" cy="32" r="10.5" fill="currentColor"/></symbol>
+    <symbol id="i-ward" viewBox="0 0 64 64"><path d="M32 5l23 8c1 20-5 37-23 46C14 50 8 33 9 13z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><path d="M32 19v25M21 30h22" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></symbol>
+    <symbol id="i-dash" viewBox="0 0 64 64"><path d="M9 21h19M4 33h16M9 45h19" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/><path d="M33 12l18 20-18 20" fill="none" stroke="currentColor" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 64 64"><path d="M10 12h44c3 0 5 2 5 5v23c0 3-2 5-5 5H31L18 56V45h-8c-3 0-5-2-5-5V17c0-3 2-5 5-5z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 64 64"><path d="M12 19h41M9 33h44M14 47h37" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 64 64"><path d="M15 15l34 34M49 15L15 49" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></symbol>
+    <symbol id="i-send" viewBox="0 0 64 64"><path d="M8 31L56 9 44 55 30 39z" fill="currentColor"/></symbol>
+    <symbol id="i-full" viewBox="0 0 64 64"><path d="M9 24V10h14M41 10h14v14M55 40v14H41M23 54H9V40" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-help" viewBox="0 0 64 64"><path d="M20 22c1-9 7-13 13-13 8 0 13 5 13 12 0 11-14 11-14 22" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linecap="round"/><circle cx="32" cy="55" r="4.5" fill="currentColor"/></symbol>
+    <symbol id="i-leave" viewBox="0 0 64 64"><path d="M27 9H11v46h16" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 32h29M43 19l13 13-13 13" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-link" viewBox="0 0 64 64"><path d="M27 37a11 11 0 0 0 16 1l10-10a11 11 0 0 0-16-16l-5 5M37 27a11 11 0 0 0-16-1L11 36a11 11 0 0 0 16 16l5-5" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-window" viewBox="0 0 64 64"><path d="M12 7h40v50H12zM32 7v50M12 31h40" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-door" viewBox="0 0 64 64"><path d="M14 59V9h36v50M8 59h48" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="41" cy="36" r="3.8" fill="currentColor"/></symbol>
+    <symbol id="i-lamp" viewBox="0 0 64 64"><path d="M32 4v8M21 18h22l5 7-5 24H21l-5-24zM16 25h32M18 54h28" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M32 29c-4 5-5 8-5 11 0 3 2 5 5 5s5-2 5-5c0-3-1-6-5-11z" fill="currentColor"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 64 64"><circle cx="32" cy="32" r="11" fill="none" stroke="currentColor" stroke-width="6"/><path d="M32 6v9M32 49v9M6 32h9M49 32h9M14 14l6 6M44 44l6 6M50 14l-6 6M20 44l-6 6" stroke="currentColor" stroke-width="6.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-hood" viewBox="0 0 64 64"><path d="M32 6c13 0 21 10 21 23 0 8-2 15-6 20l9 9H8l9-9c-4-5-6-12-6-20C11 16 19 6 32 6z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><path d="M21 34c1-8 5-12 11-12s10 4 11 12c-2 8-6 12-11 12s-9-4-11-12z" fill="currentColor"/></symbol>
+    <symbol id="i-wolf" viewBox="0 0 64 64"><path d="M11 6l12 12c6-3 12-3 18 0L53 6l2 26-11 14-6 12h-12l-6-12L9 32z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><path d="M21 31l8 3M43 31l-8 3M28 46h8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 64 64"><circle cx="32" cy="32" r="12" fill="currentColor"/><path d="M32 4v9M32 51v9M4 32h9M51 32h9M12 12l6 6M46 46l6 6M52 12l-6 6M18 46l-6 6" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/></symbol>
+  </defs></svg>
+
+  <main id="entry" class="entry">
+    <h1>MOONFALL</h1>
+    <p class="premise">คืนล่า ณ หมู่บ้านโรงสี · ตะวันตกดิน ใครสักคนจะเปลี่ยนไป</p>
+    <form id="entry-form" autocomplete="off">
+      <label for="name">ชื่อที่คนในหมู่บ้านรู้จัก</label>
+      <input id="name" class="line" maxlength="20" placeholder="ชื่อของมึง" required>
+      <div class="entry-row">
+        <button id="practice" class="sign sign-main" type="button"><span>ซ้อมคนเดียวกับบอท</span></button>
+        <div id="role-pick" role="radiogroup" aria-label="บทที่จะเล่นตอนซ้อม">
+          <button type="button" data-role="" class="on">สุ่มบท</button><button type="button" data-role="wolf">หมาป่า</button><button type="button" data-role="seer">เทพ</button><button type="button" data-role="doctor">หมอ</button><button type="button" data-role="villager">ชาวบ้าน</button>
+        </div>
+      </div>
+      <div class="entry-row with-friends">
+        <button id="create" style="display:none" class="sign" type="submit"><span>สร้างห้องกับเพื่อน</span></button>
+        <input id="code" style="display:none" class="line code" aria-label="รหัสห้อง" maxlength="5" placeholder="รหัสห้อง" spellcheck="false">
+        <button id="join" style="display:none" class="sign sign-small" type="button"><span>เข้าห้อง</span></button>
+      </div>
+    </form>
+    <button id="explore" class="plain">เดินดูหมู่บ้านเฉยๆ</button>
+    <p id="entry-error" role="alert"></p>
+  </main>
+
+  <header id="hud" hidden>
+    <div class="clock"><svg id="dial" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" class="dial-face"/><use id="dial-icon" href="#i-sun" x="15" y="15" width="34" height="34"/><circle id="dial-left" cx="32" cy="32" r="29" pathLength="100" class="dial-left"/></svg><div class="clock-text"><strong id="phase-time">00:50</strong><span id="phase-label">กลางวัน</span><small id="round-label"></small></div></div>
+    <button id="role-toggle" class="seal seal-sm" aria-label="บทของมึง"><svg viewBox="0 0 100 100"><use href="#wax" class="wax" id="role-wax"/><use id="role-icon" href="#i-hood" x="25" y="25" width="50" height="50" class="emblem"/></svg></button>
+    <div class="top-right">
+      <button id="chat-toggle" class="seal seal-sm" aria-label="แชต"><svg viewBox="0 0 100 100"><use href="#wax" class="wax wax-ink"/><use href="#i-chat" x="25" y="25" width="50" height="50" class="emblem"/></svg><i id="chat-badge" hidden></i></button>
+      <button id="menu-open" class="seal seal-sm" aria-label="เมนู"><svg viewBox="0 0 100 100"><use href="#wax" class="wax wax-ink"/><use href="#i-menu" x="25" y="25" width="50" height="50" class="emblem"/></svg></button>
     </div>
+  </header>
+  <p id="place-name" aria-hidden="true"></p>
 
-    <!-- interaction prompt -->
-    <div id="prompt" hidden><span id="promptKey">E</span> <span id="promptText"></span></div>
+  <nav id="menu" class="notice" hidden>
+    <button id="room-code" class="row"><svg class="ico"><use href="#i-link"/></svg><span id="room-code-label"></span></button>
+    <button id="fullscreen" class="row"><svg class="ico"><use href="#i-full"/></svg><span>เต็มจอ</span></button>
+    <button id="help-open" class="row"><svg class="ico"><use href="#i-help"/></svg><span>วิธีเล่น</span></button>
+    <button id="leave" class="row"><svg class="ico"><use href="#i-leave"/></svg><span>ออกจากห้อง</span></button>
+  </nav>
 
-    <!-- stamina bar (baseline inline; theme.css may restyle #staminaWrap/#staminaBar/.actBtn.run) -->
-    <div id="staminaWrap" style="position:absolute;left:14px;bottom:196px;width:150px;height:12px;border:1px solid rgba(160,140,110,.5);border-radius:6px;overflow:hidden;background:rgba(10,8,5,.6);z-index:6">
-      <div id="staminaBar" style="height:100%;width:100%;background:#4fa38a;transition:width .1s linear"></div>
-    </div>
+  <section id="lobby" class="notice" hidden>
+    <h2>รอเพื่อนในหมู่บ้าน</h2>
+    <div class="invite"><b id="lobby-code"></b><button id="copy-link" class="sign sign-small"><span>คัดลอกลิงก์</span></button></div>
+    <div id="lobby-roster"></div>
+    <p id="lobby-status"></p><button id="start" class="sign sign-main"><span>เริ่มคืนแรก</span></button>
+    <small>ขั้นต่ำ 4 คน · แนะนำ 6–8 คน</small>
+  </section>
 
-    <!-- action buttons (mobile + hint) -->
+  <aside id="role-panel" hidden><p id="role-name"></p><p id="role-description" hidden></p><div id="private-notes"></div></aside>
+  <section id="role-card" class="notice" hidden><svg viewBox="0 0 100 100" class="card-seal"><use href="#wax" class="wax" id="card-wax"/><use id="card-icon" href="#i-hood" x="25" y="25" width="50" height="50" class="emblem"/></svg><h2 id="card-title"></h2><p id="card-text"></p></section>
+
+  <div id="bottom-hud" hidden>
+    <button id="interact-action" class="sign sign-act" hidden><svg class="ico"><use id="interact-icon" href="#i-door"/></svg><span id="interact-label">ใช้งาน</span><kbd>E</kbd></button>
     <div id="actions">
-      <button id="actKill" class="actBtn wolf" hidden>ฆ่า</button>
-      <button id="actSeer" class="actBtn seer" hidden>ร่ายพยากรณ์</button>
-      <button id="actGuard" class="actBtn guard" hidden>กางบาเรีย</button>
-      <button id="actUse" class="actBtn" hidden>ใช้งาน</button>
-      <button id="actRun" class="actBtn run" style="background:#3a5a7a">วิ่ง</button>
-    </div>
-
-    <!-- minigame / meeting overlay host -->
-    <div id="overlay" hidden></div>
-
-    <!-- touch dpad -->
-    <div id="dpad">
-      <button data-dir="up">▲</button>
-      <div class="dpadmid">
-        <button data-dir="left">◀</button>
-        <button data-dir="right">▶</button>
-      </div>
-      <button data-dir="down">▼</button>
-    </div>
-
-    <!-- title / start -->
-    <div id="title">
-      <div class="titleInner">
-        <h1>MOONFALL</h1>
-        <p class="sub">หมู่บ้านใต้แสงจันทร์ — ใครคือหมาป่า?</p>
-        <button id="startBtn">เริ่มเกม</button>
-        <div class="hint">เดิน: WASD / ลูกศร &nbsp;·&nbsp; วิ่ง: Shift &nbsp;·&nbsp; ใช้งาน: E &nbsp;·&nbsp; แอ็คชั่น: Space</div>
-      </div>
-    </div>
-
-    <!-- game over -->
-    <div id="gameover" hidden>
-      <div class="goInner">
-        <h2 id="goTitle">จบเกม</h2>
-        <p id="goDesc"></p>
-        <button id="goRestart">เล่นใหม่</button>
-      </div>
+      <button id="transform-action" class="seal seal-md" hidden aria-label="แปลงร่าง"><svg viewBox="0 0 100 100"><use href="#wax" class="wax wax-night"/><use href="#i-moon" x="26" y="26" width="48" height="48" class="emblem"/></svg><kbd>Q</kbd></button>
+      <button id="dash-action" class="seal seal-md" aria-label="ฮึด"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" pathLength="100" class="ring-track"/><circle id="stamina-ring" cx="50" cy="50" r="48" pathLength="100" class="ring"/><use href="#wax" class="wax wax-gold" transform="translate(9 9) scale(.82)"/><use href="#i-dash" x="27" y="27" width="46" height="46" class="emblem"/><circle id="dash-cd" cx="50" cy="50" r="22" pathLength="100" class="cd"/></svg><kbd>Shift</kbd></button>
+      <button id="ability-action" class="seal seal-lg" hidden aria-label="สกิล"><svg viewBox="0 0 100 100"><use href="#wax" class="wax" id="ability-wax"/><circle cx="50" cy="50" r="37" class="seal-ring"/><use id="ability-icon" href="#i-claw" x="24" y="24" width="52" height="52" class="emblem"/><circle id="ability-cd" cx="50" cy="50" r="22" pathLength="100" class="cd"/></svg><kbd>Space</kbd></button>
     </div>
   </div>
 
-  <script src="game.js"></script>
-</body>
-</html>
+  <div id="target-picker" class="notice" hidden><span id="target-title">เลือกผู้เล่น</span><div id="target-list"></div></div>
+  <section id="chat" class="notice" hidden><div class="chat-head"><strong id="chat-heading">เสียงในหมู่บ้าน</strong><select id="channel" aria-label="ช่องแชต"><option value="public">หมู่บ้าน</option></select><button id="chat-close" class="icon-btn" aria-label="ปิดแชต"><svg class="ico"><use href="#i-close"/></svg></button></div><div id="chat-messages" role="log" aria-live="polite"></div><form id="chat-form"><input id="chat-input" class="line" maxlength="240" placeholder="พิมพ์ข้อความ…" autocomplete="off"><button class="icon-btn" aria-label="ส่งข้อความ"><svg class="ico"><use href="#i-send"/></svg></button></form><p id="chat-restriction" hidden></p></section>
+  <section id="meeting" class="notice meeting" hidden><div class="meeting-heading"><h2 id="meeting-title">ใครซ่อนเขี้ยวไว้?</h2><p id="meeting-description"></p></div><div id="ballots"></div><button id="skip-vote" class="plain">งดออกเสียง</button><p id="vote-result"></p><button id="restart" class="sign sign-main" hidden><span>กลับเข้าหมู่บ้านรอบใหม่</span></button></section>
+  <section id="help" class="notice" hidden><button id="help-close" class="icon-btn close" aria-label="ปิด"><svg class="ico"><use href="#i-close"/></svg></button><h2>เชื่อใครดี?</h2><p>หมาป่าซ่อนตัวในหมู่บ้าน กลางคืนแปลงร่างออกล่า กลางวันทุกคนคุยและโหวตไล่คนที่สงสัย ชาวบ้านชนะเมื่อกำจัดหมาป่าหมด หมาป่าชนะเมื่อเหลือจำนวนเท่าฝ่ายหมู่บ้าน</p><dl><dt>WASD / ลูกศร</dt><dd>เดิน · เล็งด้วยเมาส์</dd><dt>Shift</dt><dd>ฮึดหนี ใช้ความอึด มีคูลดาวน์</dd><dt>E</dt><dd>เปิด–ปิดประตู หน้าต่าง / ช่วยงานใกล้ตัว</dd><dt>Q / Space</dt><dd>หมาป่าแปลงร่าง / พุ่งล่า มีจังหวะเตือนก่อนพุ่ง</dd><dt>Space</dt><dd>เทพพยากรณ์ตรวจฝ่าย · หมอเลือกปกป้อง คืนละหนึ่งคน</dd><dt>Enter</dt><dd>เปิดแชต · Esc ปิด</dd></dl><p>ข้ามแม่น้ำได้แค่สะพาน กับหินข้ามน้ำทางเหนือ กลางคืนจำไว้ว่าใครเดินไปทางไหน</p></section>
+  <div id="toast" role="status" hidden></div><div id="connection" hidden>กำลังเชื่อมต่อกลับ…</div>
+  <div id="touch-controls" hidden><div id="stick-zone"></div><div id="joystick"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><path d="M50 6v9M50 85v9M6 50h9M85 50h9"/></svg><i></i></div></div>
+  <section id="rotate-screen"><div class="rotate-phone" aria-hidden="true"><i></i></div><h2>หมุนจอ แล้วเข้าหมู่บ้าน</h2><p>Moonfall เล่นบนมือถือในแนวนอน<br>จะได้เห็นทางหนีและกดปุ่มได้ถนัด</p><button id="landscape" class="sign sign-main"><span>เข้าเต็มจอแนวนอน</span></button><small>หากจอไม่หมุน ให้เปิดหมุนหน้าจออัตโนมัติ</small></section>
+  <script type="module" src="game.js"></script>
+</body></html>
